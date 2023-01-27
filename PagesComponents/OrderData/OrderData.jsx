@@ -15,6 +15,8 @@ import { AddressBook } from "@styled-icons/fa-solid/AddressBook";
 import { BarcodeBox } from "@styled-icons/remix-fill/BarcodeBox";
 import { CreditCard } from "@styled-icons/icomoon/CreditCard";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function OrderDataComponent({ api, mktName, routeTranslations }) {
   const history = useRouter();
 

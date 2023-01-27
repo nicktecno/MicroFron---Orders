@@ -14,6 +14,8 @@ import { Check } from "@styled-icons/boxicons-regular/Check";
 
 import Loading from "../../components/Loading";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function OrdersHistoryComponent({ api, routeTranslations, mktName }) {
   const [orders, setOrders] = useState();
   // eslint-disable-next-line no-unused-vars
