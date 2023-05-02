@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
     "@module-federation/nextjs-mf": "^6.0.1",
+    "@mui/material": "^5.12.2",
     "algoliasearch": "^4.14.3",
     "axios": "^1.2.2",
     "bootstrap": "4.6.0",
@@ -23,6 +26,7 @@
     "react-geocode": "^0.2.3",
     "react-helmet": "^6.1.0",
     "react-input-mask": "^2.0.4",
+    "react-qr-code": "^2.0.11",
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
     "styled-icons": "^10.47.0",

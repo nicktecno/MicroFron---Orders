@@ -8,26 +8,87 @@ const customMedia = generateMedia({
   mobile: "576px",
 });
 
-export const caminho = styled.div`
+export const ContainerLoading = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 50px;
+`;
+
+export const ContainerCancel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .canceled {
+    background-color: transparent !important;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  svg {
+    width: 30px;
+    color: #ce171f;
+  }
+`;
+
+export const ContainerGeneral = styled.div`
+  height: 100%;
+
+  flex-direction: column;
+  padding: 0px 12%;
+  display: flex;
+  width: 100%;
+  position: relative;
+
+  align-items: center;
+  align-self: center;
+
+  ${customMedia.lessThan("1366px")`
+    padding: 0px 5%;
+  `}
+
+  ${customMedia.lessThan("tablet")`
+    padding:0px 20px;
+  `}
+
+  .buttonVoltar {
+    padding: 10px 50px;
+
+    ${customMedia.greaterThan("notebook")`
+    &.notebook{
+    display:none
+}
+  `}
+  }
+`;
+
+export const Breadcrumb = styled.div`
   width: 100%;
   height: 65px;
   margin-bottom: 40px;
   position: relative;
-  color: #292728;
+  max-width: 1920px;
+
+  color: black;
   padding-top: 40px;
+
   span {
     font-weight: bold;
   }
+
   a {
     color: #292728;
     transition: 0.3s;
+    cursor: pointer;
   }
 `;
 
-export const topicos = styled.div`
+export const List = styled.div`
   display: flex;
+  width: 100%;
   margin-bottom: 30px;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   ${customMedia.lessThan("notebook")`
     flex-direction:column;
@@ -35,7 +96,7 @@ export const topicos = styled.div`
 `}
 `;
 
-export const ContainerEsquerdo = styled.div`
+export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -45,7 +106,7 @@ export const ContainerEsquerdo = styled.div`
 `}
 `;
 
-export const ContainerEnderecoPagamento = styled.div`
+export const ContainerAddressPayment = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -56,13 +117,18 @@ export const ContainerEnderecoPagamento = styled.div`
 `}
 `;
 
-export const ContainerEndereco = styled.div`
+export const ContainerAddress = styled.div`
   display: flex;
   flex-direction: column;
   font-weight: 600;
   font-size: 18px;
-  width: 300px;
+  width: 60%;
   color: var(--font-color);
+
+  ${customMedia.lessThan("mobile")`
+  font-size:16px;
+  
+`}
 
   ${customMedia.lessThan("tablet")`
   width:100%;
@@ -97,13 +163,96 @@ export const ContainerEndereco = styled.div`
       margin-right: 20px;
     }
   }
+
+  span {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+
+    align-items: center;
+    flex-wrap: wrap;
+  }
+`;
+
+export const ContainerStep = styled.div`
+  display: flex;
+  ${customMedia.lessThan("mobile")`
+  display:none;
+  
+`}
+
+  &.individual {
+    ${customMedia.lessThan("notebook")`
+  display:none;
+  
+`}
+  }
+`;
+
+export const ContainerStepMobile = styled.div`
+  display: none;
+
+  &.individual {
+    ${customMedia.lessThan("notebook")`
+  justify-content:center;
+ 
+  
+  display:flex;
+  flex-direction:column;
+
+  .MuiMobileStepper-progress{
+    width:100%;
+  }
+  
+
+  
+`}
+  }
+  ${customMedia.lessThan("mobile")`
+  justify-content:center;
+ 
+  
+  display:flex;
+  flex-direction:column;
+
+  .MuiMobileStepper-progress{
+    width:100%;
+  }
+  
+`}
+`;
+
+export const CustomLabelSteps = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  font-weight: bold;
+
+  &.desk {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 5px 0px;
+    ${customMedia.lessThan("mobile")`
+  display:none
+  
+`}
+  }
+  &.title {
+    font-size: 18px;
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+  
+`}
+  }
 `;
 
 export const pagamento = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 300px;
+  width: 35%;
 
   ${customMedia.lessThan("tablet")`
   width:100%;
@@ -116,15 +265,22 @@ export const pagamento = styled.div`
     color: var(--font-color);
     font-weight: bold;
     margin: 0px;
+
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+  
+`}
   }
 `;
 
-export const forma = styled.div`
+export const MethodChoosed = styled.div`
   padding: 15px 25px;
   display: flex;
   color: black;
+  flex-direction: column;
   background: #f4f4f5;
   min-height: 140px;
+
   margin-top: 10px !important;
   margin: 0px;
   justify-content: center;
@@ -148,26 +304,42 @@ export const forma = styled.div`
     color: var(--title-color);
     transition: 0.3s;
   }
+
+  .containerCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .portions {
+      font-size: 16px;
+    }
+  }
   div {
     font-weight: bold;
     border: 0px;
+    font-size: 20px;
     padding: 10px 20px;
   }
 `;
 
-export const historico = styled.div`
+export const History = styled.div`
   margin-top: 15px;
   h2 {
     color: #292728;
     font-size: 18px;
     font-weight: bold;
+
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+`}
   }
 `;
 
-export const DadosHistorico = styled.div`
+export const HistoryData = styled.div`
   display: flex;
   flex-direction: column;
-  background: #f4f4f5;
+  background: #ffff;
   box-shadow: rgb(134 133 133 / 16%) 1px 1px 5px,
     rgb(92 91 91 / 23%) 0px 0px 0px;
   padding: 20px 25px;
@@ -178,6 +350,25 @@ export const ContainerProduto = styled.div`
   margin-top: 10px;
   width: 100%;
   flex-direction: column;
+  background: #f4f4f5;
+  padding: 15px 15px;
+
+  p {
+    font-size: 18px;
+    margin-top: 5px;
+
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+`}
+  }
+  .spanMetodoEnvio {
+    align-self: flex-end;
+    font-weight: bold;
+    font-size: 18px;
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+`}
+  }
 `;
 
 export const ContainerProdutoMap = styled.div`
@@ -195,12 +386,26 @@ export const remersa = styled.div`
     color: #292728;
     font-weight: bold;
     justify-content: space-between;
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+`}
+  }
+  .sellerName {
+    display: flex;
+    font-size: 18px;
 
-    span {
-      display: flex;
-      text-align: end;
-      margin-left: 10px;
-      font-weight: bold;
+    ${customMedia.lessThan("mobile")`
+  font-size:16px;
+  flex-direction:column;
+`}
+
+    strong {
+      margin-left: 5px;
+
+      ${customMedia.lessThan("mobile")`
+  margin-top:5px;
+  margin-left:0px;
+`}
     }
   }
 `;
@@ -209,17 +414,13 @@ export const ContainerCaixaItem = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  .spanMetodoEnvio {
-    align-self: flex-end;
-  }
 `;
 
 export const caixaItem = styled.div`
   margin-bottom: 20px;
   display: flex;
   width: 100%;
-  background: #f4f4f5;
+  background: #ffff;
   box-shadow: rgb(134 133 133 / 16%) 1px 1px 5px,
     rgb(92 91 91 / 23%) 0px 0px 0px;
 
@@ -305,9 +506,12 @@ export const imgitemDescricao = styled.div`
       width: 100%;
       height: auto;
       font-size: 15px;
-
+      min-height: 50px;
       font-weight: bold;
-      overflow: auto;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
       ${customMedia.lessThan("360px")`
       
   justify-content: center;
@@ -386,6 +590,10 @@ export const imgitemDescricao = styled.div`
       font-weight: bold;
     }
   }
+
+  b {
+    margin-left: 2px;
+  }
 `;
 
 export const descritem = styled.div`
@@ -422,22 +630,21 @@ export const descritem = styled.div`
   }
 `;
 
-export const produtos = styled.div`
+export const Products = styled.div`
+  display: flex;
   position: relative;
+  width: 100%;
+  max-width: 1920px;
 `;
 export const ContainerTotal = styled.div`
   display: flex;
   flex-direction: column;
-  right: 13%;
-  position: fixed;
+  align-items: flex-end;
+  position: relative;
 
-  ${customMedia.lessThan("1450px")`
-  right: 8%;
-`}
-  ${customMedia.lessThan("1150px")`
-  right: 5%;
-`}
-
+  &.payment {
+    margin-bottom: 20px;
+  }
   ${customMedia.lessThan("notebook")`
    position: unset;
    width:100%;
@@ -445,12 +652,19 @@ export const ContainerTotal = styled.div`
 
   h4 {
     font-size: 18px;
+    display: flex;
+    width: 250px;
+    justify-content: center;
     color: var(--font-color);
     font-weight: 700;
   }
 
   .buttonVoltar {
     border: 0px;
+    display: flex;
+    width: 250px;
+    padding: 20px;
+    justify-content: center;
     padding: 10px;
     margin-top: 10px;
     transition: 0.3s;
@@ -476,43 +690,29 @@ ${customMedia.lessThan("mobile")`
   }
 `;
 
-export const ContainerDireito = styled.div`
+export const RightContainer = styled.div`
   display: flex;
+  flex: 1;
+  align-content: flex-end;
+  flex-direction: column;
   ${customMedia.lessThan("notebook")`
-  margin-top:30px;
-  width:100%;
+  display:none;
 `}
 `;
 
-export const total = styled.div`
-  background: #f4f4f5;
-  box-shadow: rgb(134 133 133 / 16%) 3px 3px 80px,
-    rgb(92 91 91 / 23%) 0px 0px 3px;
-  width: 250px;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  min-height: 250px;
+export const DataPaymentNotebook = styled.div`
+  display: none;
 
   ${customMedia.lessThan("notebook")`
+  display: flex;
+  flex: 1;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  margin-top:30px;
+  margin-bottom:20px;
   width:100%;
 `}
-
-  p {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-size: 16px;
-    color: #000;
-    margin: 15px 0;
-
-    span {
-      font-size: 18px;
-      margin-top: 10px;
-      font-weight: bold;
-      position: relative;
-    }
-  }
 `;
 
 export const bts = styled.div`
